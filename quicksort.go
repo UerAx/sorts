@@ -5,42 +5,42 @@ type QuickSort struct {
 	size int
 }
 
-func (this *QuickSort) Sort(arr []int) {
-	this.add(arr)
-	this.quickSort(0, this.size - 1)
+func (p *QuickSort) Sort(arr []int) {
+	p.add(arr)
+	p.quickSort(0, p.size - 1)
 }
 
-func (this *QuickSort) add(arr []int) {
-	this.arr = arr
-	this.size = len(arr)
+func (p *QuickSort) add(arr []int) {
+	p.arr = arr
+	p.size = len(arr)
 }
 
-func (this *QuickSort) quickSort(left, right int) {
+func (p *QuickSort) quickSort(left, right int) {
 	if right <= left {
 		return
 	}
 	
-	key := this.getKey(left, right)
+	key := p.getKey(left, right)
 
 	l,r := left,right
 
 	for(l < r) {
-		for l < r && this.arr[r] >= key {r--}
-		this.arr[l] = this.arr[r]
-		for l < r && this.arr[l] <= key {l++}
-		this.arr[r] = this.arr[l]
+		for l < r && p.arr[r] >= key {r--}
+		p.arr[l] = p.arr[r]
+		for l < r && p.arr[l] <= key {l++}
+		p.arr[r] = p.arr[l]
 	}
 
-	this.arr[l] = key
-	this.quickSort(left, l-1)
-	this.quickSort(l+1, right)
+	p.arr[l] = key
+	p.quickSort(left, l-1)
+	p.quickSort(l+1, right)
 	
 
 }
 
-func (this *QuickSort) getKey(left, right int) int {
+func (p *QuickSort) getKey(left, right int) int {
 	mid := (left+right)>>1
-	this.arr[left], this.arr[mid] = this.arr[mid], this.arr[left]
-	return this.arr[left]
+	p.arr[left], p.arr[mid] = p.arr[mid], p.arr[left]
+	return p.arr[left]
 }
 
