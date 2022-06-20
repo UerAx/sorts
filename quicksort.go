@@ -36,3 +36,11 @@ func key(arr []int, left, right int) int {
 	arr[left], arr[mid] = arr[mid], arr[left]
 	return arr[left]
 }
+
+func QuickSort2Way(arr []int) {
+
+}
+
+func QuickSort3Way(arr []int) {
+
+}
