@@ -18,11 +18,11 @@ func quickSort(arr []int, left, right int) {
 		for l < r && arr[r] >= key {
 			r--
 		}
-		arr[l] = arr[r]
-		for l < r && arr[l] <= key {
+		arr[r], arr[l] = arr[l], arr[r]
+		for l < r && arr[l] < key {
 			l++
 		}
-		arr[r] = arr[l]
+		arr[r], arr[l] = arr[l], arr[r]
 	}
 
 	arr[l] = key
@@ -47,25 +47,26 @@ func quickSort2Way(arr []int, left, right int) {
 	}
 
 	key := key(arr, left, right)
-	l, r := left, right
+	l, r := left+1, right
 
-	for l < r {
-		for l < r && arr[l] < key {
+	for {
+		for l <= right && arr[l] < key {
 			l++
 		}
-		for l < r && arr[r] > key {
+		for r > left && arr[r] > key {
 			r--
 		}
 		if l < r {
 			arr[l], arr[r] = arr[r], arr[l]
 			l++
 			r--
+		} else {
+			break
 		}
 	}
-
-	arr[l] = key
-	quickSort2Way(arr, left, l - 1)
-	quickSort2Way(arr, l + 1, right)
+	arr[r], arr[left] = arr[left], arr[r]
+	quickSort2Way(arr, left, r - 1)
+	quickSort2Way(arr, r + 1, right)
 
 }
 

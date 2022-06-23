@@ -12,7 +12,7 @@ import (
 )
 
 func TestQuickSort(t *testing.T) {
-	arr := []int{5, 5, 5, 5, 1}
+	arr := []int{2, 5, 5, 3, 1}
 	QuickSort(arr)
 	fmt.Println(arr)
 }
